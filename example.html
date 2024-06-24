@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Effect in IDE-like Style</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
+
+        body {
+            font-family: 'Fira Code', monospace;
+            background: linear-gradient(135deg, #2d2d2d 25%, #3a3a3a 100%);
+            color: #dcdcdc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+            background-image: url('D:\\PortFolio website\\Mandar\\assets\\home-bg.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .typing-container {
+            background-color: #1e1e1e;
+            border: 1px solid #3c3c3c;
+            border-radius: 5px;
+            width: 80%;
+            max-width: 800px;
+            height: 300px; /* Fixed height */
+            text-align: left;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            animation: fadeIn 2s ease-in-out;
+            position: relative;
+        }
+
+        .typing-header {
+            background-color: #333;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .typing-header .circle {
+            height: 12px;
+            width: 12px;
+            background-color: #ff5f56;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        .typing-header .circle:nth-child(2) {
+            background-color: #ffbd2e;
+        }
+
+        .typing-header .circle:nth-child(3) {
+            background-color: #27c93f;
+        }
+
+        .typing-header span {
+            margin-left: 10px;
+        }
+
+        .typing-text-container {
+            padding: 20px;
+            height: calc(100% - 60px); /* Adjusting height to fit within the container */
+            overflow-y: auto; /* Enable scrolling */
+        }
+
+        .typing-text {
+            font-size: 16px;
+            white-space: pre-wrap;
+            color: #dcdcdc;
+        }
+
+        .keyword {
+            color: #569CD6;
+        }
+
+        .string {
+            color: #CE9178;
+        }
+
+        .comment {
+            color: #6A9955;
+        }
+
+        .variable {
+            color: #9CDCFE;
+        }
+
+        .nav-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-container a {
+            background-color: #000;
+            color: #61dafb;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .nav-container a:hover {
+            background-color: #333;
+            color: #21a1f1;
+        }
+
+        .cursor {
+            display: inline-block;
+            background-color: #dcdcdc;
+            width: 2px;
+            height: 1em;
+            margin-left: 2px;
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            from, to {
+                background: transparent;
+            }
+            50% {
+                background: #dcdcdc;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-container">
+        <a href="#projects">Projects</a>
+        <a href="#certification">Certification</a>
+        <a href="#linkedin">LinkedIn</a>
+        <a href="#others">Others</a>
+    </div>
+    <div class="typing-container">
+        <div class="typing-header">
+            <span class="circle"></span>
+            <span class="circle"></span>
+            <span class="circle"></span>
+            <span>index.py - Visual Studio Code</span>
+        </div>
+        <div class="typing-text-container">
+            <div id="typingText" class="typing-text"></div><div class="cursor"></div>
+        </div>
+    </div>
+
+    <script>
+        const text = `<span class="comment"># Welcome to my portfolio</span>\n
+<span class="variable">name</span> = <span class="string">'Mandar Patil'</span>\n
+<span class="variable">education</span> = <span class="string">'B.Tech in CSE(AIML) at KIT's College of Engineering'</span>\n
+<span class="variable">interests</span> = [<span class="string">'Machine Learning'</span>, <span class="string">'Deep Learning'</span>, <span class="string">'related fields'</span>]\n
+\n
+<span class="comment"># Take a look at my work below</span>`;
+        const typingTextElement = document.getElementById('typingText');
+        let index = 0;
+
+        function typeText() {
+            if (index < text.length) {
+                if (text.charAt(index) === '<') {
+                    let endIndex = text.indexOf('>', index);
+                    typingTextElement.innerHTML += text.substring(index, endIndex + 1);
+                    index = endIndex + 1;
+                } else {
+                    typingTextElement.innerHTML += text.charAt(index);
+                    index++;
+                }
+                setTimeout(typeText, 50);
+            }
+        }
+
+        window.onload = typeText;
+    </script>
+</body>
+</html>
