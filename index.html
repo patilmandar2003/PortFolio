@@ -3,37 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mandar Patil PortFolio</title>
+    <title>Mandar Patil Portfolio</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
 
         body {
             font-family: 'Fira Code', monospace;
-            background: linear-gradient(135deg, #2d2d2d 25%, #3a3a3a 100%);
-            color: #dcdcdc;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            background: #f4f4f9;
+            color: #333;
             margin: 0;
+            padding: 0;
+            display: flex;
             flex-direction: column;
-            background-image: url('https://raw.githubusercontent.com/patilmandar2003/PortFolio/main/assets/home-bg.jpg');
-            background-size: cover;
-            background-position: center;
+            align-items: center;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e90ff 25%, #6495ed 100%);
+            color: white;
+            text-align: center;
+            padding: 50px 0;
+            width: 100%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+
+        .header p {
+            margin: 10px 0 20px;
+            font-size: 18px;
+        }
+
+        .header a {
+            background-color: #fff;
+            color: #1e90ff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .header a:hover {
+            background-color: #1e90ff;
+            color: #fff;
+        }
+
+        .nav-container {
+            margin: 20px 0;
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-container a {
+            color: #1e90ff;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .nav-container a:hover {
+            background-color: #1e90ff;
+            color: #fff;
+        }
+
+        .about {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 50px 0;
+            width: 100%;
+            background: #f9f9f9;
+        }
+
+        .about img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            margin-right: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .about p {
+            max-width: 600px;
+            line-height: 1.6;
         }
 
         .typing-container {
-            background-color: #1e1e1e;
-            border: 1px solid #3c3c3c;
+            background-color: #fff;
+            border: 1px solid #ddd;
             border-radius: 5px;
             width: 80%;
             max-width: 800px;
-            height: 300px; /* Fixed height */
+            height: 300px;
             text-align: left;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             overflow: hidden;
             animation: fadeIn 2s ease-in-out;
-            position: relative;
+            margin: 20px 0;
         }
 
         .typing-header {
@@ -68,14 +141,13 @@
 
         .typing-text-container {
             padding: 20px;
-            height: calc(100% - 60px); /* Adjusting height to fit within the container */
-            overflow-y: auto; /* Enable scrolling */
+            height: calc(100% - 40px);
+            overflow-y: auto;
         }
 
         .typing-text {
             font-size: 16px;
             white-space: pre-wrap;
-            color: #dcdcdc;
         }
 
         .keyword {
@@ -94,35 +166,9 @@
             color: #9CDCFE;
         }
 
-        .nav-container {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            display: flex;
-            gap: 10px;
-        }
-
-        .nav-container a {
-            background-color: #1e1e1e; /* Matching the background color of the typing container */
-            color: #dcdcdc; /* Matching the text color */
-            padding: 10px 15px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 14px;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            display: inline-block;
-            text-align: center;
-            border: 1px solid #3c3c3c; /* Adding a border for contrast */
-        }
-
-        .nav-container a:hover {
-            background-color: #333;
-            color: #21a1f1;
-        }
-
         .cursor {
             display: inline-block;
-            background-color: #dcdcdc;
+            background-color: #333;
             width: 2px;
             height: 1em;
             margin-left: 2px;
@@ -134,7 +180,7 @@
                 background: transparent;
             }
             50% {
-                background: #dcdcdc;
+                background: #333;
             }
         }
 
@@ -149,12 +195,26 @@
     </style>
 </head>
 <body>
+    <div class="header">
+        <h1>Hey, I'm Mandar Patil</h1>
+        <p>I help start-ups, developing outstanding web products.</p>
+        <a href="#">WORK WITH ME</a>
+    </div>
+
     <div class="nav-container">
+        <a href="about_me.html">About Me</a>
         <a href="projects.html">Projects</a>
-        <a href="certifications.html">Certification</a>
-        <a href="#linkedin">LinkedIn</a>
+        <a href="certifications.html">Certifications</a>
+        <a href="https://www.linkedin.com/in/mandar-patil-16a1a5226/">LinkedIn</a>
+        <a href="contact.html">Contact Me</a>
         <a href="#others">Others</a>
     </div>
+
+    <div class="about">
+        <img src="https://raw.githubusercontent.com/patilmandar2003/PortFolio/main/assets/home-bg.jpg" alt="Mandar Patil">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+    </div>
+
     <div class="typing-container">
         <div class="typing-header">
             <span class="circle"></span>
