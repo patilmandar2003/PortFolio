@@ -7,9 +7,13 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
 
+        html, body {
+            overflow-x: hidden;
+        }
+
         body {
             font-family: 'Fira Code', monospace;
-            background: #f4f4f9;
+            background: #FEE715;
             color: #333;
             margin: 0;
             padding: 0;
@@ -19,7 +23,7 @@
         }
 
         .header {
-            background: linear-gradient(135deg, #1e90ff 25%, #6495ed 100%);
+            background: linear-gradient(135deg, #101820 25%, #101820 100%);
             color: white;
             text-align: center;
             padding: 50px 0;
@@ -39,7 +43,7 @@
 
         .header a {
             background-color: #fff;
-            color: #1e90ff;
+            color: #101820;
             padding: 10px 20px;
             border-radius: 5px;
             text-decoration: none;
@@ -49,7 +53,7 @@
         }
 
         .header a:hover {
-            background-color: #1e90ff;
+            background-color: #101820;
             color: #fff;
         }
 
@@ -57,10 +61,11 @@
             margin: 20px 0;
             display: flex;
             gap: 10px;
+            flex-wrap: wrap;
         }
 
         .nav-container a {
-            color: #1e90ff;
+            color: #101820;
             text-decoration: none;
             font-size: 16px;
             padding: 5px 10px;
@@ -69,34 +74,45 @@
         }
 
         .nav-container a:hover {
-            background-color: #1e90ff;
+            background-color: #101820;
             color: #fff;
+        }
+
+        .about-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px 0;
+            width: 100%;
+            background: #FEE715;
+            flex-wrap: wrap;
         }
 
         .about {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            padding: 50px 0;
-            width: 100%;
-            background: #f9f9f9;
+            max-width: 600px;
+            margin: 20px;
         }
 
         .about img {
             border-radius: 50%;
             width: 150px;
             height: 150px;
-            margin-right: 30px;
+            margin-bottom: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .about p {
-            max-width: 600px;
             line-height: 1.6;
+            text-align: center;
         }
 
         .typing-container {
-            background-color: #fff;
+            transform: translateX(-20px); /* Adjust the value as needed */
+            background-color: #2d2a2a;
+            color: #ffffff;
             border: 1px solid #ddd;
             border-radius: 5px;
             width: 80%;
@@ -106,8 +122,13 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             overflow: hidden;
             animation: fadeIn 2s ease-in-out;
-            margin: 20px 0;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
         }
+
+
 
         .typing-header {
             background-color: #333;
@@ -143,6 +164,7 @@
             padding: 20px;
             height: calc(100% - 40px);
             overflow-y: auto;
+            flex-grow: 1;
         }
 
         .typing-text {
@@ -192,6 +214,22 @@
                 opacity: 1;
             }
         }
+
+        @media (min-width: 768px) {
+            .about-container {
+                flex-direction: row;
+                justify-content: space-between;
+                padding: 50px;
+            }
+
+            .about {
+                max-width: 40%;
+            }
+
+            .typing-container {
+                max-width: 50%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -210,30 +248,27 @@
         <a href="#others">Others</a>
     </div>
 
-    <div class="about">
-        <img src="https://raw.githubusercontent.com/patilmandar2003/PortFolio/main/assets/home-bg.jpg" alt="Mandar Patil">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-    </div>
-
-    <div class="typing-container">
-        <div class="typing-header">
-            <span class="circle"></span>
-            <span class="circle"></span>
-            <span class="circle"></span>
-            <span>mandar.py - Visual Studio Code</span>
+    <div class="about-container">
+        <div class="about">
+            <img src="https://raw.githubusercontent.com/patilmandar2003/PortFolio/main/assets/home-bg.jpg" alt="Mandar Patil">
+            <p>Hello! I'm Mandar Ravindra Patil, a passionate data scientist and machine learning engineer. With a strong background in AI and a commitment to innovation, I aim to drive technological advancements in India's dynamic tech landscape.</p>
         </div>
-        <div class="typing-text-container">
-            <div id="typingText" class="typing-text"></div><div class="cursor"></div>
+
+        <div class="typing-container">
+            <div class="typing-header">
+                <span class="circle"></span>
+                <span class="circle"></span>
+                <span class="circle"></span>
+                <span>mandar.py - Visual Studio Code</span>
+            </div>
+            <div class="typing-text-container">
+                <div id="typingText" class="typing-text"></div><div class="cursor"></div>
+            </div>
         </div>
     </div>
 
     <script>
-        const text = `<span class="comment"># Welcome to my portfolio</span>\n
-<span class="variable">name</span> = <span class="string">'Mandar Patil'</span>\n
-<span class="variable">education</span> = <span class="string">'B.Tech in CSE(AIML) at KIT's College of Engineering'</span>\n
-<span class="variable">interests</span> = [<span class="string">'Machine Learning'</span>, <span class="string">'Deep Learning'</span>, <span class="string">'related fields'</span>]\n
-\n
-<span class="comment"># Have a look at my professional achievements.</span>`;
+        const text = `<span class="comment"># Welcome to my portfolio</span>\n\n<span class="variable">name</span> = <span class="string">'Mandar Patil'</span>\n\n<span class="variable">education</span> = <span class="string">'B.Tech in CSE(AIML) at KIT's College of Engineering'</span>\n\n<span class="variable">interests</span> = [<span class="string">'Machine Learning'</span>, <span class="string">'Deep Learning'</span>, <span class="string">'related fields'</span>]\n\n<span class="comment"># Have a look at my professional achievements.</span>`;
         const typingTextElement = document.getElementById('typingText');
         let index = 0;
 
